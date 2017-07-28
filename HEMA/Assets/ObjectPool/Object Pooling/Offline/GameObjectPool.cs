@@ -15,6 +15,8 @@ public class GameObjectPool
     private List<GameObject> m_PoolObj = new List<GameObject>();
 	private Dictionary<GameObject, int> m_RestockAmountForObject = new Dictionary<GameObject, int>();
 
+    private ObjectPoolManager m_ManagerObject;
+
 	public GameObjectPool()
 	{
 	}
@@ -59,7 +61,12 @@ public class GameObjectPool
 			i_PoolObject = m_PoolObj[Random.Range(0, m_PoolObj.Count)];
 		}
 
-        GameObject newGameobj = GameObject.Instantiate(i_PoolObject, new Vector3(-1337, -1337, -1337), Quaternion.identity) as GameObject;
+        if (m_ManagerObject == null)
+        {
+            m_ManagerObject = GameObject.FindObjectOfType<ObjectPoolManager>();
+        }
+
+        GameObject newGameobj = GameObject.Instantiate(i_PoolObject, new Vector3(-1337, -1337, -1337), Quaternion.identity, m_ManagerObject.transform) as GameObject;
         newGameobj.SetActive(false);
         m_GameObjectList.Add(newGameobj);
 

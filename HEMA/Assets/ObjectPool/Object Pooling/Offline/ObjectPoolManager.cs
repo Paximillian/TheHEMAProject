@@ -69,7 +69,7 @@ public class ObjectPoolManager : MonoBehaviour
 		try
 		{
 			returnedObject = Instance.GetPoolForObject(i_ObjectPoolTag).PullObject();
-		}
+        }
 		catch(Exception ex)
 		{
 			if(ex is NullReferenceException)
