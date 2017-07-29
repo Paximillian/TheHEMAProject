@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class AnimationHandler : MonoBehaviour
 {
     [SerializeField]
-    private string i_SpriteSheetPath;
+    private string m_SpriteSheetPath;
 
     private Sprite[] m_Sprites;
 
@@ -18,7 +18,7 @@ public class AnimationHandler : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
-        m_Sprites = Resources.LoadAll<Sprite>(i_SpriteSheetPath);
+        m_Sprites = Resources.LoadAll<Sprite>(m_SpriteSheetPath);
         m_CurrentSprite = GetComponent<Image>();
 
         m_CurrentSprite.sprite = m_Sprites[0];
