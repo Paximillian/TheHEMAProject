@@ -93,6 +93,7 @@
     <Compile Include="Assets\ObjectPool\Sample scenes\Scripts\OnlineTest.cs" />
     <Compile Include="Assets\Scripts\Animations\AnimationDispatcher.cs" />
     <Compile Include="Assets\Scripts\Animations\AnimationHandler.cs" />
+    <Compile Include="Assets\Scripts\Systems\ApplicationSettings.cs" />
     <Compile Include="Assets\Scripts\Transformations\CharacterForm.cs" />
     <Compile Include="Assets\Scripts\Transformations\TransformableCharacter.cs" />
     <Compile Include="Assets\Scripts\Transformations\TransformationInvoker.cs" />

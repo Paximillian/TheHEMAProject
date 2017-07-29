@@ -36,11 +36,15 @@ public class CharacterForm : MonoBehaviour
     {
         set
         {
-            m_Sprite.fillAmount = value;
-
-            if (m_Sprite.fillAmount >= 1)
+            if (m_Sprite.fillAmount < 0.99f)
             {
-                OnTransformationComplete?.Invoke(this);
+                m_Sprite.fillAmount = value;
+
+                if (m_Sprite.fillAmount >= 0.99f)
+                {
+                    m_Sprite.fillAmount = 1;
+                    OnTransformationComplete?.Invoke(this);
+                }
             }
         }
     }

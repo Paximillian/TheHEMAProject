@@ -44,8 +44,9 @@ public class TransformableCharacter : MonoBehaviour
     {
         Destroy(m_CurrentBaseForm.gameObject);
 
-        r_FormLineDict.Remove(i_CompletedForm);
+        r_FormLineDict[i_CompletedForm].OnLineFinished -= TransformationLine_LineFinished;
         i_CompletedForm.OnTransformationComplete -= CharacterForm_TransformationComplete;
+        r_FormLineDict.Remove(i_CompletedForm);
         m_CurrentBaseForm = i_CompletedForm;
     }
 
