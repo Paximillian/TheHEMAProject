@@ -91,14 +91,16 @@
     <Compile Include="Assets\ObjectPool\Object Pooling\Utility\NoPoolSourcesException.cs" />
     <Compile Include="Assets\ObjectPool\Sample scenes\Scripts\OfflineTest.cs" />
     <Compile Include="Assets\ObjectPool\Sample scenes\Scripts\OnlineTest.cs" />
+    <Compile Include="Assets\Scripts\Abilities\AbilityBase.cs" />
+    <Compile Include="Assets\Scripts\Abilities\TransformationAbility.cs" />
     <Compile Include="Assets\Scripts\Animations\AnimationDispatcher.cs" />
     <Compile Include="Assets\Scripts\Animations\AnimationHandler.cs" />
     <Compile Include="Assets\Scripts\Systems\ApplicationSettings.cs" />
     <Compile Include="Assets\Scripts\Transformations\CharacterForm.cs" />
     <Compile Include="Assets\Scripts\Transformations\TransformableCharacter.cs" />
-    <Compile Include="Assets\Scripts\Transformations\TransformationInvoker.cs" />
     <Compile Include="Assets\Scripts\Transformations\TransformationLine.cs" />
     <Compile Include="Assets\Scripts\Utils\BiDirectionalDictionary.cs" />
+    <Compile Include="Assets\Scripts\Utils\Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ObjectPool\Version History.txt" />

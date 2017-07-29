@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Represents a form of a TransformableCharacter that is a parent of this object.
+/// </summary>
+[RequireComponent(typeof(Image))]
+[AddComponentMenu("Scripts/Transformations/Character Form")]
 public class CharacterForm : MonoBehaviour
 {
     /// <summary>

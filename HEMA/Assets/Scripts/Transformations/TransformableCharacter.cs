@@ -6,8 +6,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 
+
+/// <summary>
+/// A character that supports transformations.
+/// Each transformation is represented as a CharacterForm on a child of this object.
+/// </summary>
+[RequireComponent(typeof(Collider2D))]
+[AddComponentMenu("Scripts/Transformations/Transformable Character")]
 public class TransformableCharacter : MonoBehaviour
 {
+    //Holds a 1-1 dictionary between a form object of this character and the line responsible for transforming it.
+    private readonly BiDirectionalDictionary<CharacterForm, TransformationLine> r_FormLineDict = new BiDirectionalDictionary<CharacterForm, TransformationLine>();
+    
     [Tooltip("A list of prefabs representing the forms of this character.\nFor this to work, they need to have the exact same form in all sprites and animations, differing only by skin")]
     [SerializeField]
     private CharacterForm[] m_CharacterForms;
@@ -15,9 +25,6 @@ public class TransformableCharacter : MonoBehaviour
     //The last form to have completed transformation (Having 1 fill ratio)
     private CharacterForm m_CurrentBaseForm;
 
-    //Holds a 1-1 dictionary between a form object of this character and the line responsible for transforming it.
-    private readonly BiDirectionalDictionary<CharacterForm, TransformationLine> r_FormLineDict = new BiDirectionalDictionary<CharacterForm, TransformationLine>();
-    
     //Controls flow of next form of character.
     private int m_CurrentFormId = -1;
     private int m_NextFormId => m_CurrentFormId = (m_CurrentFormId + 1 == m_CharacterForms.Length ? 0 : m_CurrentFormId + 1);
@@ -33,7 +40,11 @@ public class TransformableCharacter : MonoBehaviour
     {
         //This object holds an image so that during level construction we'll be able to see what the level would look like, in runtime this is managed by forms on the children of this object, so
         //the static image is no longer required.
-        Destroy(GetComponent<Image>());
+        Image placeholderImage = null;
+        if (placeholderImage = GetComponent<Image>())
+        {
+            Destroy(placeholderImage);
+        }
 
         m_CurrentBaseForm = m_NextForm;
         m_CurrentBaseForm.TransformationRatio = 1;
@@ -91,6 +102,7 @@ public class TransformableCharacter : MonoBehaviour
         return newForm;
     }
 
+    //When a line finishes movement, we'll automatically complete the transformation of all off screen characters that were started.
     private void TransformationLine_LineFinished(TransformationLine i_TransformationLine)
     {
         CharacterForm affectedForm = r_FormLineDict[i_TransformationLine];

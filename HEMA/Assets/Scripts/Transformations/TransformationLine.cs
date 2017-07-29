@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(RectTransform))]
+[AddComponentMenu("Scripts/Transformations/Transformation Line")]
 public class TransformationLine : MonoBehaviour
 {
     public event Action<TransformationLine> OnLineFinished;
@@ -11,6 +13,7 @@ public class TransformationLine : MonoBehaviour
     private RectTransform m_RectTransform;
 
     [SerializeField]
+    [Tooltip("The amount of pixels this line moves each frame, basically the line's speed")]
     private int m_ScannedPixelsPerUpdate = 10;
 
     private void Awake()
